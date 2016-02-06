@@ -100,6 +100,23 @@ Children:
           value: '0'
       Base: Compressor
       Name: Compressor
+    - Children: []
+      Properties:
+        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id003 ['0', '1', '2', '3', '4', '5', '6', '7']
+          default: '0'
+          name: Output Channel (Solenoid)
+          validators: &id004 [Solenoid]
+          value: '1'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id005 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: &id006 [Solenoid]
+          value: '0'
+      Base: Solenoid
+      Name: GShiftSolen
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -136,20 +153,19 @@ Children:
     - Children: []
       Properties:
         Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1', '2', '3', '4', '5', '6', '7']
+          choices: *id003
           default: '0'
           name: Output Channel (Solenoid)
-          validators: [Solenoid]
+          validators: *id004
           value: '0'
         Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
-            '12', '13', '14', '15', '16', '17', '18', '19', '20']
+          choices: *id005
           default: '0'
           name: Output PCM (Solenoid)
-          validators: [Solenoid]
+          validators: *id006
           value: '0'
       Base: Solenoid
-      Name: ThePickuppySolenoid
+      Name: PickupSolen
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -172,30 +188,30 @@ Children:
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: &id003 ['0', '1', '2', '3', '4', '5']
+        choices: &id007 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
-        validators: &id004 [Joystick]
+        validators: &id008 [Joystick]
         value: '2'
     Base: Joystick
     Name: Gamepad
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id003
+        choices: *id007
         default: 1
         name: Number
-        validators: *id004
+        validators: *id008
         value: '0'
     Base: Joystick
     Name: leftJoy
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id003
+        choices: *id007
         default: 1
         name: Number
-        validators: *id004
+        validators: *id008
         value: '1'
     Base: Joystick
     Name: rightJoy

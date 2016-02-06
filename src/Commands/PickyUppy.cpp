@@ -37,7 +37,7 @@ void PickyUppy::Execute() {
 		Robot::pickup->ReverseMotor();
 	}
 	else if (Robot::oi->getGamepad()->GetRawButton(3)){
-			Robot::pickup->Raise();
+		Robot::pickup->RandL();
 	}
 	else if (Robot::oi->getGamepad()->GetRawButton(4)){
 			Robot::pickup->Lower();

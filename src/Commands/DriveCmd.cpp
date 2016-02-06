@@ -31,6 +31,12 @@ void DriveCmd::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveCmd::Execute() {
 	Robot::chassis->DriveWithJoysticks();
+	if (Robot::oi->getrightJoy()->GetRawButton(3) && Robot::oi->getleftJoy()->GetRawButton(3)) {
+		Robot::chassis->GShift();
+	}
+	if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
+		Robot::chassis->InvertMotors();
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
