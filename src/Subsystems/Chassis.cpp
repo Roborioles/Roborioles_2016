@@ -35,10 +35,10 @@ Chassis::Chassis() : Subsystem("Chassis") {
 
     printf("yo");
     MotorDirect = 1;
-    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kFrontLeftMotor,true);
-    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kFrontRightMotor,true);
-    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kRearLeftMotor,true);
-    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kRearRightMotor,true);
+    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kFrontLeftMotor,false);
+    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kFrontRightMotor,false);
+    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kRearLeftMotor,false);
+    driveMotors->SetInvertedMotor(RobotDrive::MotorType::kRearRightMotor,false);
 }
 
 void Chassis::InitDefaultCommand() {
