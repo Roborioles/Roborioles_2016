@@ -122,4 +122,10 @@ void Chassis::PrintValues() {
 	//SmartDashboard::PutString("DB/String 2","Accel: Z");
 	SmartDashboard::PutNumber("AccelZ",Z);
 
+	// Print encoder positions
+	SmartDashboard::PutNumber("Left Motor 1 Encoder Position: ",leftMotor1->GetEncPosition());
+	SmartDashboard::PutNumber("Left Motor 2 Encoder Position: ",leftMotor2->GetEncPosition());
+	SmartDashboard::PutNumber("Right Motor 1 Encoder Position: ",rightMotor1->GetEncPosition());
+	SmartDashboard::PutNumber("Right Motor 2 Encoder Position: ",rightMotor2->GetEncPosition());
+
 }
