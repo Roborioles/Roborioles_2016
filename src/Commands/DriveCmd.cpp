@@ -37,6 +37,7 @@ void DriveCmd::Execute() {
 	if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
 		Robot::chassis->InvertMotors();
 	}
+	Robot::chassis->PrintValues();
 }
 
 // Make this return true when this Command no longer needs to run execute()

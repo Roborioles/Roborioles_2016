@@ -58,13 +58,23 @@ void Pickup::MoveMotor(double speed){
 	thePickupMotor->Set(speed);
 }
 void Pickup::RandL(){
-	if (!pickupSolen->Get()){
-		Robot::pickup->Raise();
-	}
-	else if (pickupSolen->Get()){
-		Robot::pickup->Raise();
-	}
+	bool position = pickupSolen->Get();
+	printf("Current position is %s\n",position?"true":"false");
+	pickupSolen->Set(!position);
+	Wait(0.5);
+	printf("After setting position is %s\n",pickupSolen->Get()?"true":"false");
+	//if (!pickupSolen->Get()){
+	//	Robot::pickup->Raise();
+	//}
+	//else if (pickupSolen->Get()){
+	//	Robot::pickup->Raise();
+	//}
 }
+
+std::shared_ptr<Solenoid> Pickup::GetPickupSolen(){
+	return pickupSolen;
+}
+
 
 
 // Put methods for controlling this subsystem

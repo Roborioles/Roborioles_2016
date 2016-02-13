@@ -30,16 +30,17 @@ void PickyUppy::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PickyUppy::Execute() {
-	if(Robot::oi->getGamepad()->GetRawButton(1)){
+	if(Robot::oi->getGamepad()->GetRawButton(1)){ // Blue - X //
 		Robot::pickup->StartMotor();
 	}
-	else if (Robot::oi->getGamepad()->GetRawButton(2)){
+	else if (Robot::oi->getGamepad()->GetRawButton(2)){ // Green - A //
 		Robot::pickup->ReverseMotor();
 	}
-	else if (Robot::oi->getGamepad()->GetRawButton(3)){
+	else if (Robot::oi->getGamepad()->GetRawButton(3)){ // Red - B //
+		// Robot::pickup->GetPickupSolen()->Set(!Robot::pickup->GetPickupSolen()->Get());
 		Robot::pickup->RandL();
 	}
-	else if (Robot::oi->getGamepad()->GetRawButton(4)){
+	else if (Robot::oi->getGamepad()->GetRawButton(4)){  // Orange - Y //
 			Robot::pickup->Lower();
 	}
 	else{
