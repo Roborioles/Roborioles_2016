@@ -62,7 +62,7 @@ void Shooter::SetSpeed(int speed) {
 	double d = 3;			/*Kd 3 */
 	double f = 0.0003;		/*Kf 0.0003 */
 	int izone = 300;		/* encoder ticks/ analog units 300 */
-	double ramprate = 12;	/* volts per second, =>0% to 100% in 250ms, 48 */
+	double ramprate = 24;	/* volts per second, =>0% to 100% in 250ms, 48 */
 	int profile = 1;		/* can be 0 or 1 */
 
 	leftShooterMotor->SelectProfileSlot(profile);
@@ -81,12 +81,12 @@ void Shooter::SetSpeed(int speed) {
 */
 }
 void Shooter::SetDownSpeed(int speed) {
-	double p = 0.03;			/*Kp 0.03 */
-	double i = 0.003;		/*Ki 0.003 */
-	double d = 3;			/*Kd 3 */
-	double f = 0.003;		/*Kf 0.0003 */
+	double p = 0;			/*Kp 0.03 */
+	double i = 0;		/*Ki 0.003 */
+	double d = 0;			/*Kd 3 */
+	double f = 0.5;		/*Kf 0.0003 */
 	int izone = 300;		/* encoder ticks/ analog units 300 */
-	double ramprate = 26;	/* volts per second, =>0% to 100% in 250ms, 48 */
+	double ramprate = 36;	/* volts per second, =>0% to 100% in 250ms, 48 */
 	int profile = 1;		/* can be 0 or 1 */
 
 	leftShooterMotor->SelectProfileSlot(profile);
@@ -98,19 +98,30 @@ void Shooter::SetDownSpeed(int speed) {
 
 }
 void Shooter::PrintValues() {
-	printf("Left Current Amps: %f\n",leftShooterMotor->GetOutputCurrent());
-	printf("Left Output: %f\n",leftShooterMotor->GetOutputVoltage());
-	printf("Left busV: %f\n\n",leftShooterMotor->GetBusVoltage());
 
-	printf("Left quadEncoder velocity: %i\n",leftShooterMotor->GetEncVel());
+/* 	printf("Left Current Amps: %f\n",leftShooterMotor->GetOutputCurrent());
+	printf("Left Output: %f\n",leftShooterMotor->GetOutputVoltage());
+	printf("Left busV: %f\n\n",leftShooterMotor->GetBusVoltage()); */
+
+	SmartDashboard::PutNumber("Left velocity",leftShooterMotor->GetEncVel());
+	SmartDashboard::PutNumber("Left speed",leftShooterMotor->GetSpeed());
+	SmartDashboard::PutNumber("Left PID",leftShooterMotor->PIDGet());
+	SmartDashboard::PutNumber("Left PID",leftShooterMotor->PIDGet()-leftShooterMotor->GetSetpoint());
+
+/*	printf("Left quadEncoder velocity: %i\n",leftShooterMotor->GetEncVel());
 	printf("Left selected sensor speed: %i\n\n",leftShooterMotor->GetSpeed());
 
 	printf("Right Current Amps: %f\n",rightShooterMotor->GetOutputCurrent());
 	printf("Right Output: %f\n",rightShooterMotor->GetOutputVoltage());
-	printf("Right busV: %f\n\n",rightShooterMotor->GetBusVoltage());
+	printf("Right busV: %f\n\n",rightShooterMotor->GetBusVoltage()); */
 
-	printf("Right quadEncoder velocity: %i\n",rightShooterMotor->GetEncVel());
-	printf("Right selected sensor speed: %i\n\n",rightShooterMotor->GetSpeed());
+	SmartDashboard::PutNumber("Right velocity",rightShooterMotor->GetEncVel());
+	SmartDashboard::PutNumber("Right speed",rightShooterMotor->GetSpeed());
+	SmartDashboard::PutNumber("Right PID",rightShooterMotor->PIDGet());
+	SmartDashboard::PutNumber("Right PID",rightShooterMotor->PIDGet()-rightShooterMotor->GetSetpoint());
+
+/*	printf("Right quadEncoder velocity: %i\n",rightShooterMotor->GetEncVel());
+	printf("Right selected sensor speed: %i\n\n",rightShooterMotor->GetSpeed()); */
 
 }
 
