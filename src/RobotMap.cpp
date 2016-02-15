@@ -48,7 +48,7 @@ void RobotMap::init() {
     chassisDriveMotors.reset(new RobotDrive(chassisLeftMotor1, chassisLeftMotor2,
               chassisRightMotor1, chassisRightMotor2));
     
-    chassisDriveMotors->SetSafetyEnabled(true);
+    chassisDriveMotors->SetSafetyEnabled(false);
         chassisDriveMotors->SetExpiration(0.1);
         chassisDriveMotors->SetSensitivity(0.5);
         chassisDriveMotors->SetMaxOutput(1.0);

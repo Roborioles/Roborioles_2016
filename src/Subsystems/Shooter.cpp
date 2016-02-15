@@ -62,7 +62,7 @@ void Shooter::SetSpeed(int speed) {
 	double d = 3;			/*Kd 3 */
 	double f = 0.0003;		/*Kf 0.0003 */
 	int izone = 300;		/* encoder ticks/ analog units 300 */
-	double ramprate = 24;	/* volts per second, =>0% to 100% in 250ms, 48 */
+	double ramprate = 36;	/* volts per second, =>0% to 100% in 250ms, 48 */
 	int profile = 1;		/* can be 0 or 1 */
 
 	leftShooterMotor->SelectProfileSlot(profile);

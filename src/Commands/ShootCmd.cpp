@@ -34,7 +34,7 @@ void ShootCmd::Execute() {
 
 		//High Goal - Button X
 		if(Robot::oi->getGamepad()->GetRawButton(1)){
-			Robot::shooter->SetSpeed(270);   //375
+			Robot::shooter->SetSpeed(295);   //295
 			/*do{
 				Robot::shooter->PrintValues();
 				Wait(.1);
@@ -66,7 +66,7 @@ void ShootCmd::Execute() {
 
 		//LowGoal - Button Y
 		if (Robot::oi->getGamepad()->GetRawButton(4)) {
-			Robot::shooter->SetSpeed(244);   //244
+			Robot::shooter->SetSpeed(150);   //150
 			/*do{
 				Robot::shooter->PrintValues();
 				Wait(.1);
