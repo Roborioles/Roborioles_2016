@@ -34,9 +34,7 @@ void DriveCmd::Execute() {
 	if (Robot::oi->getrightJoy()->GetRawButton(3) && Robot::oi->getleftJoy()->GetRawButton(3)) {
 		Robot::chassis->GShift();
 	}
-	if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
-		Robot::chassis->InvertMotors();
-	}
+
 	Robot::chassis->PrintValues();
 }
 

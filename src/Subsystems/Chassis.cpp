@@ -77,6 +77,11 @@ double Chassis::deadband(double JoystickValue,double DeadbandCutOff) {
 }
 
 void Chassis::DriveWithJoysticks(){
+	if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
+		MotorDirect=-1;
+	}	else {
+		MotorDirect=1;
+	}
 	float left = deadband(Robot::oi->getleftJoy()->GetY() * MotorDirect,0.05);
 	float right = deadband(Robot::oi->getrightJoy()->GetY() * MotorDirect,0.05);
 
@@ -105,9 +110,22 @@ void Chassis::GShift() {
 	}
 }
 
-void Chassis::InvertMotors() {
-	MotorDirect = MotorDirect * -1;
-}
+void Chassis::driveFeet(double feet=10,double speed=.5){
+	RobotMap::chassisLeftMotor1->SetPosition(0);
+	RobotMap::chassisLeftMotor2->SetPosition(0);
+	RobotMap::chassisRightMotor1->SetPosition(0);
+	RobotMap::chassisRightMotor2->SetPosition(0);
+	RobotMap::chassisRightMotor1->SetControlMode(RobotMap::chassisRightMotor1->kFollower);
+	RobotMap::chassisRightMotor2->SetControlMode(RobotMap::chassisRightMotor2->kFollower);
+	RobotMap::chassisRightMotor1->Set(2);
+	RobotMap::chassisRightMotor2->Set(3);
+		double distance=abs(feet/(3.1415 * diameter)*1000.0);
+		while(abs(RobotMap::chassisLeftMotor1->GetEncPosition())<distance){
+			RobotMap::chassisLeftMotor1->Set((feet>0?speed:-speed)*(1-(abs(RobotMap::chassisLeftMotor1->GetEncPosition())/distance)));
+		}
+		RobotMap::chassisLeftMotor1->Set(0);
+		RobotMap::chassisLeftMotor2->Set(1);
+	}
 
 void Chassis::PrintValues() {
 	double X = accel->GetX();
