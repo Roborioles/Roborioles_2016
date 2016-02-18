@@ -40,13 +40,13 @@ void Pickup::InitDefaultCommand() {
 }
 
 void Pickup::StartMotor(){
-	thePickupMotor->Set(.75);
+	thePickupMotor->Set(1);
 }
 void Pickup::EndMotor(){
 	thePickupMotor->Set(0);
 }
 void Pickup::ReverseMotor(){
-	thePickupMotor->Set(-.75);
+	thePickupMotor->Set(-1);
 }
 void Pickup::Raise(){
 	pickupSolen->Set(true);
