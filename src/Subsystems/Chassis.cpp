@@ -131,22 +131,16 @@ void Chassis::PrintValues() {
 	SmartDashboard::PutNumber("AccelZ",Z);
 
 	// Print encoder positions
-	SmartDashboard::PutNumber("Left Motor 1 Encoder Position: ",leftMotor1->GetEncPosition());
-	SmartDashboard::PutNumber("Left Motor 2 Encoder Position: ",leftMotor2->GetEncPosition());
-	SmartDashboard::PutNumber("Right Motor 1 Encoder Position: ",rightMotor1->GetEncPosition());
-	SmartDashboard::PutNumber("Right Motor 2 Encoder Position: ",rightMotor2->GetEncPosition());
+	SmartDashboard::PutNumber("leftMotor2 Position: ",leftMotor2->GetEncPosition());
+	SmartDashboard::PutNumber("leftMotor2 Velocity",leftMotor2->GetEncVel());
+	SmartDashboard::PutNumber("rightMotor2 Position: ",rightMotor2->GetEncPosition());
+	SmartDashboard::PutNumber("rightMotor2 Velocity",rightMotor2->GetEncVel());
 
-	SmartDashboard::PutNumber("Left 1 Velocity",leftMotor1->GetEncVel());
-	SmartDashboard::PutNumber("Left 2 Velocity",leftMotor2->GetEncVel());
-	SmartDashboard::PutNumber("Right 1 Velocity",rightMotor1->GetEncVel());
-	SmartDashboard::PutNumber("Right 2 Velocity",rightMotor2->GetEncVel());
+}
 
-	/* printf("Left 1 Current Amps: %f\n",leftMotor1->GetOutputCurrent());
-	printf("Left 1 Output: %f\n",leftMotor1->GetOutputVoltage());
-	printf("Left 1 busV: %f\n\n",leftMotor1->GetBusVoltage());
-
-	printf("Left 2 Current Amps: %f\n",leftMotor2->GetOutputCurrent());
-	printf("Left 2 Output: %f\n",leftMotor2->GetOutputVoltage());
- 	printf("Left 2 busV: %f\n\n",leftMotor2->GetBusVoltage()); */
-
+void Chassis::resetPosition(){
+    leftMotor1->SetPosition(0);
+    leftMotor2->SetPosition(0);
+    rightMotor1->SetPosition(0);
+    rightMotor2->SetPosition(0);
 }

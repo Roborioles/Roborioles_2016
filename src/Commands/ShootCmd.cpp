@@ -25,7 +25,7 @@ ShootCmd::ShootCmd(): Command() {
 
 // Called just before this Command runs the first time
 void ShootCmd::Initialize() {
-
+	Robot::shooter->PrintValues();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -34,13 +34,14 @@ void ShootCmd::Execute() {
 
 		//High Goal - Button X
 		if(Robot::oi->getGamepad()->GetRawButton(1)){
-			Robot::shooter->SetSpeed(295);   //295
+			Robot::shooter->SetSpeed(350);   //295
 			/*do{
 				Robot::shooter->PrintValues();
 				Wait(.1);
 			}while (Robot::shooter->GetMotorVel()<450);
 			*/
-			Wait(1.5);  //1.25
+			Robot::shooter->PrintValues();
+			Wait(2.5);  //1.25
 			Robot::shooter->PrintValues();
 			Robot::shooter->SetSolen(true);
 			Wait(.5);
@@ -66,13 +67,13 @@ void ShootCmd::Execute() {
 
 		//LowGoal - Button Y
 		if (Robot::oi->getGamepad()->GetRawButton(4)) {
-			Robot::shooter->SetSpeed(150);   //150
+			Robot::shooter->SetSpeed(175);   //150
 			/*do{
 				Robot::shooter->PrintValues();
 				Wait(.1);
 			}while (Robot::shooter->GetMotorVel()<450);
 			 */
-			Wait(1);    //1
+			Wait(1.5);    //1
 			Robot::shooter->PrintValues();
 			Robot::shooter->SetSolen(true);
 			Wait(.5);

@@ -48,11 +48,12 @@ void Robot::RobotInit() {
  * You can use it to reset subsystems before shutting down.
  */
 void Robot::DisabledInit(){
-
+	chassis->resetPosition();
 }
 
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
+	chassis->PrintValues();
 }
 
 void Robot::AutonomousInit() {
