@@ -58,10 +58,12 @@ void PneumaticSub::RatchRelease(){
 
 void PneumaticSub::ResetSoleniods() {
 	gShiftSolen->Set(false);
+	scissorSolen->Set(false);
 }
 
 void PneumaticSub::PrintValues() {
-	SmartDashboard::PutBoolean("gShiftsolen:",gShiftSolen->Get());
+	SmartDashboard::PutBoolean("gShiftSolen:",gShiftSolen->Get());
+	SmartDashboard::PutBoolean("scissorSolen:",scissorSolen->Get());
 }
 
 // Put methods for controlling this subsystem

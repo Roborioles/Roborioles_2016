@@ -48,7 +48,7 @@ void Robot::RobotInit() {
  * You can use it to reset subsystems before shutting down.
  */
 void Robot::DisabledInit(){
-	chassis->resetPosition();
+
 }
 
 void Robot::DisabledPeriodic() {
@@ -59,7 +59,7 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
-
+	chassis->resetPosition();
 	Robot::pneumaticSub->ResetSoleniods();
 }
 
@@ -74,7 +74,7 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
-
+	chassis->resetPosition();
 	Robot::pneumaticSub->ResetSoleniods();
 }
 

@@ -106,16 +106,17 @@ void Chassis::driveFeet(double feet=10,double speed=.5){
 	RobotMap::chassisRightMotor1->SetPosition(0);
 	RobotMap::chassisRightMotor2->SetPosition(0);
 	RobotMap::chassisRightMotor1->SetControlMode(RobotMap::chassisRightMotor1->kFollower);
-	RobotMap::chassisRightMotor2->SetControlMode(RobotMap::chassisRightMotor2->kFollower);
-	RobotMap::chassisRightMotor1->Set(2);
-	RobotMap::chassisRightMotor2->Set(3);
-		double distance=abs(feet/(3.1415 * diameter)*1000.0);
-		while(abs(RobotMap::chassisLeftMotor1->GetEncPosition())<distance){
-			RobotMap::chassisLeftMotor1->Set((feet>0?speed:-speed)*(1-(abs(RobotMap::chassisLeftMotor1->GetEncPosition())/distance)));
-		}
-		RobotMap::chassisLeftMotor1->Set(0);
-		RobotMap::chassisLeftMotor2->Set(1);
+	RobotMap::chassisRightMotor1->Set(1);
+	RobotMap::chassisLeftMotor1->SetControlMode(RobotMap::chassisLeftMotor2->kFollower);
+	RobotMap::chassisLeftMotor1->Set(3);
+	double distance=abs(feet/(3.1415 * diameter)*1000.0);
+	while(abs(RobotMap::chassisLeftMotor2->GetEncPosition())<distance){
+		RobotMap::chassisLeftMotor2->Set((feet>0?speed:-speed)*(1-(abs(RobotMap::chassisLeftMotor2->GetEncPosition())/distance)));
+		RobotMap::chassisRightMotor2->Set((feet>0?speed:-speed)*(1-(abs(RobotMap::chassisRightMotor2->GetEncPosition())/distance)));
 	}
+	RobotMap::chassisLeftMotor2->Set(0);
+	RobotMap::chassisRightMotor2->Set(0);
+}
 
 void Chassis::PrintValues() {
 	double X = accel->GetX();

@@ -70,16 +70,16 @@ void RobotMap::init() {
     shooterShooterSolenoid.reset(new Solenoid(0, 1));
     lw->AddActuator("Shooter", "ShooterSolenoid", shooterShooterSolenoid);
     
-    pneumaticSubDefenseSolen.reset(new Solenoid(0, 0));
+    pneumaticSubDefenseSolen.reset(new Solenoid(0, 3));
     lw->AddActuator("PneumaticSub", "DefenseSolen", pneumaticSubDefenseSolen);
     
     pneumaticSubGShiftSolen.reset(new Solenoid(0, 2));
     lw->AddActuator("PneumaticSub", "GShiftSolen", pneumaticSubGShiftSolen);
     
-    pneumaticSubScissorSolen.reset(new Solenoid(0, 3));
+    pneumaticSubScissorSolen.reset(new Solenoid(0, 4));
     lw->AddActuator("PneumaticSub", "ScissorSolen", pneumaticSubScissorSolen);
     
-    pneumaticSubRatchetSolen.reset(new Solenoid(0, 4));
+    pneumaticSubRatchetSolen.reset(new Solenoid(0, 0));
     lw->AddActuator("PneumaticSub", "RatchetSolen", pneumaticSubRatchetSolen);
     
 
