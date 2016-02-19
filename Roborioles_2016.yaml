@@ -100,23 +100,6 @@ Children:
           value: '0'
       Base: Compressor
       Name: Compressor
-    - Children: []
-      Properties:
-        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id003 ['0', '1', '2', '3', '4', '5', '6', '7']
-          default: '0'
-          name: Output Channel (Solenoid)
-          validators: &id004 [Solenoid]
-          value: '2'
-        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id005 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
-          default: '0'
-          name: Output PCM (Solenoid)
-          validators: &id006 [Solenoid]
-          value: '0'
-      Base: Solenoid
-      Name: GShiftSolen
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -150,22 +133,6 @@ Children:
           value: '9'
       Base: Speed Controller
       Name: ThePickupMotor
-    - Children: []
-      Properties:
-        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
-          default: '0'
-          name: Output Channel (Solenoid)
-          validators: *id004
-          value: '0'
-        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id005
-          default: '0'
-          name: Output PCM (Solenoid)
-          validators: *id006
-          value: '0'
-      Base: Solenoid
-      Name: PickupSolen
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -205,16 +172,17 @@ Children:
     - Children: []
       Properties:
         Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: &id003 ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
           name: Output Channel (Solenoid)
-          validators: *id004
+          validators: &id004 [Solenoid]
           value: '1'
         Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id005
+          choices: &id005 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
           default: '0'
           name: Output PCM (Solenoid)
-          validators: *id006
+          validators: &id006 [Solenoid]
           value: '0'
       Base: Solenoid
       Name: ShooterSolenoid
@@ -233,11 +201,122 @@ Children:
         value: []
     Base: Subsystem
     Name: Shooter
+  - Children:
+    - Children: []
+      Properties:
+        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '0'
+          name: Output Channel (Solenoid)
+          validators: *id004
+          value: '0'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: *id006
+          value: '0'
+      Base: Solenoid
+      Name: DefenseSolen
+    - Children: []
+      Properties:
+        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '0'
+          name: Output Channel (Solenoid)
+          validators: *id004
+          value: '2'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: *id006
+          value: '0'
+      Base: Solenoid
+      Name: GShiftSolen
+    - Children: []
+      Properties:
+        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '0'
+          name: Output Channel (Solenoid)
+          validators: *id004
+          value: '6'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: *id006
+          value: '7'
+      Base: Solenoid
+      Name: ScissorSolen
+    - Children: []
+      Properties:
+        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '0'
+          name: Output Channel (Solenoid)
+          validators: *id004
+          value: '7'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: *id006
+          value: '7'
+      Base: Solenoid
+      Name: RatchetSolen
+    Properties:
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: PneumaticSub
   Properties: {}
   Base: Subsystems
   Name: Subsystems
 - Children:
-  - Children: []
+  - Children:
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: Gamepad}
+        Parameters: !!robotbuilder.data.properties.ParametersProperty
+          default: []
+          name: Parameters
+          validators: null
+          value: []
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id009 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+            '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23',
+            '24', '25', '26', '27', '28', '29', '30', '31', '32']
+          default: '1'
+          name: Button
+          validators: null
+          value: '5'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: &id010 [TypeDropdownSelected]
+          value: DefenseSolTog
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id011 [whileHeld, whenPressed, whenReleased]
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
+      Base: Joystick Button
+      Name: Defense5
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id007 ['0', '1', '2', '3', '4', '5']
@@ -257,7 +336,36 @@ Children:
         value: '0'
     Base: Joystick
     Name: leftJoy
-  - Children: []
+  - Children:
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: rightJoy}
+        Parameters: !!robotbuilder.data.properties.ParametersProperty
+          default: []
+          name: Parameters
+          validators: null
+          value: []
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id009
+          default: '1'
+          name: Button
+          validators: null
+          value: '11'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id010
+          value: GShiftSolTog
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
+      Base: Joystick Button
+      Name: Climb11
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id007
@@ -335,20 +443,92 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Shooter}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id009 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id009
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: ShootCmd
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: PneumaticSub}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: DefenseSolTog
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: PneumaticSub}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: GShiftSolTog
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: PneumaticSub}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ScissorSolTog
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: PneumaticSub}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: RatchetSolTog
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Vince\workspace',
-    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\Users\Vince\workspace'}
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\user\workspace',
+    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\2016'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
   Autonomous command parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -366,8 +546,8 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Vince\',
-    extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\Users\Ben\workspace'}
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\user\',
+    extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\2016'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
 Base: Robot
