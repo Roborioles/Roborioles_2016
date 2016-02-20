@@ -41,6 +41,7 @@ public:
 	void SetSolen(bool value);
 	int GetMotorVel();
 	std::shared_ptr<Solenoid> GetShooterSolenoid();
+	bool CompareValues();
 };
 
 #endif

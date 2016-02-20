@@ -81,6 +81,7 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 	Robot::pneumaticSub->PrintValues();
+	shooter->PrintValues();
 }
 
 void Robot::TestPeriodic() {

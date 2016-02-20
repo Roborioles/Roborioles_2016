@@ -76,19 +76,19 @@ double Chassis::deadband(double JoystickValue,double DeadbandCutOff) {
 }
 
 void Chassis::DriveWithJoysticks(){
+	float left = deadband(Robot::oi->getleftJoy()->GetY(),0.05);
+	float right = deadband(Robot::oi->getrightJoy()->GetY(),0.05);
+
+//	SmartDashboard::PutNumber("Left Joy: ",left);
+//	SmartDashboard::PutNumber("Right Joy: ",right);
+
 	if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
-		MotorDirect=-1;
-	}	else {
-		MotorDirect=1;
+		left  = left * -1;
+		right = right * -1;
+		driveMotors->TankDrive(right,left);
+	} else {
+		driveMotors->TankDrive(left,right);
 	}
-	float left = deadband(Robot::oi->getleftJoy()->GetY() * MotorDirect,0.05);
-	float right = deadband(Robot::oi->getrightJoy()->GetY() * MotorDirect,0.05);
-
-	SmartDashboard::PutNumber("Left Joy: ",left);
-	SmartDashboard::PutNumber("Right Joy: ",right);
-
-	driveMotors->TankDrive(left,right);
-
 }
 
 void Chassis::Stop(){
