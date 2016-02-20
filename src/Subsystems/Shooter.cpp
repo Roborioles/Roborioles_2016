@@ -82,10 +82,10 @@ void Shooter::SetSpeed(int speed) {
 
 }
 void Shooter::SetDownSpeed(int speed) {
-	double p = 0;			/*Kp 0.03 */
-	double i = 0;		/*Ki 0.003 */
+	double p = 0.1;			/*Kp 0.03 */
+	double i = 0;			/*Ki 0.003 */
 	double d = 0;			/*Kd 3 */
-	double f = 0.5;		/*Kf 0.0003 */
+	double f = 0.6;			/*Kf 0.0003 */ // 0.5
 	int izone = 300;		/* encoder ticks/ analog units 300 */
 	double ramprate = 36;	/* volts per second, =>0% to 100% in 250ms, 48 */
 	int profile = 1;		/* can be 0 or 1 */

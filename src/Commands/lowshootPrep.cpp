@@ -31,7 +31,7 @@ void lowshootPrep::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void lowshootPrep::Execute() {
 	Robot::shooter->GetShooterSolenoid()->Set(false);
-	Robot::shooter->SetDownSpeed(125);
+	Robot::shooter->SetDownSpeed(90);
 }
 
 // Make this return true when this Command no longer needs to run execute()
