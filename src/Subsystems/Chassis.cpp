@@ -101,21 +101,44 @@ void Chassis::Compress() {
 }
 
 void Chassis::driveFeet(double feet=10,double speed=.5){
-	RobotMap::chassisLeftMotor1->SetPosition(0);
-	RobotMap::chassisLeftMotor2->SetPosition(0);
-	RobotMap::chassisRightMotor1->SetPosition(0);
-	RobotMap::chassisRightMotor2->SetPosition(0);
-	RobotMap::chassisRightMotor1->SetControlMode(RobotMap::chassisRightMotor1->kFollower);
-	RobotMap::chassisRightMotor1->Set(1);
-	RobotMap::chassisLeftMotor1->SetControlMode(RobotMap::chassisLeftMotor2->kFollower);
-	RobotMap::chassisLeftMotor1->Set(3);
+	// convert to feet
+	feet = feet * 12;
+	double left;
+	double right;
+
+	/* leftMotor1->SetPosition(0);
+	leftMotor2->SetPosition(0);
+	rightMotor1->SetPosition(0);
+	rightMotor2->SetPosition(0); */
+
+	printf("Entering driveFeet with feet=%f at speed %f\n",feet,speed);
+//	RobotMap::chassisRightMotor1->SetControlMode(RobotMap::chassisRightMotor1->kFollower);
+//	RobotMap::chassisRightMotor1->Set(1);
+//	RobotMap::chassisLeftMotor1->SetControlMode(RobotMap::chassisLeftMotor2->kFollower);
+//	RobotMap::chassisLeftMotor1->Set(3);
 	double distance=abs(feet/(3.1415 * diameter)*1000.0);
-	while(abs(RobotMap::chassisLeftMotor2->GetEncPosition())<distance){
-		RobotMap::chassisLeftMotor2->Set((feet>0?speed:-speed)*(1-(abs(RobotMap::chassisLeftMotor2->GetEncPosition())/distance)));
-		RobotMap::chassisRightMotor2->Set((feet>0?speed:-speed)*(1-(abs(RobotMap::chassisRightMotor2->GetEncPosition())/distance)));
+	while (leftMotor2->GetEncPosition()<distance) {
+		leftMotor1->Set(-1 * speed);
+		leftMotor2->Set(-1 *speed);
+		rightMotor1->Set(speed);
+		rightMotor2->Set(speed);
 	}
-	RobotMap::chassisLeftMotor2->Set(0);
-	RobotMap::chassisRightMotor2->Set(0);
+	leftMotor1->Set(0);
+	leftMotor2->Set(0);
+	rightMotor1->Set(0);
+	rightMotor2->Set(0);
+
+
+	/*while(abs(RobotMap::chassisLeftMotor2->GetEncPosition())<distance){
+		left = -1* (feet>0?speed:-speed)*(1-(abs(RobotMap::chassisLeftMotor2->GetEncPosition())/distance));
+		right = (feet>0?speed:-speed)*(1-(abs(RobotMap::chassisRightMotor2->GetEncPosition())/distance));
+		printf("Left = %f, Right = %f\n",left,right);
+		leftMotor1->Set(left);
+		leftMotor2->Set(left);
+		rightMotor1->Set(right);
+		rightMotor2->Set(right);
+	} */
+	printf("Done with driving\n");
 }
 
 void Chassis::PrintValues() {

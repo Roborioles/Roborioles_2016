@@ -30,7 +30,8 @@ void AutonomousCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
-	Robot::chassis->driveFeet(10,0.5);
+	printf("Running Autononmous command\n");
+	Robot::chassis->driveFeet(10,0.4);
 }
 
 // Make this return true when this Command no longer needs to run execute()
