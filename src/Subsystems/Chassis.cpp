@@ -77,14 +77,29 @@ double Chassis::deadband(double JoystickValue,double DeadbandCutOff) {
 
 void Chassis::DriveWithJoysticks(){
 	float left = deadband(Robot::oi->getleftJoy()->GetY(),0.05);
-	float right = deadband(Robot::oi->getrightJoy()->GetY(),0.05);
 
-	if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
-		left  = left * -1;
-		right = right * -1;
-		driveMotors->TankDrive(right,left);
+	if (Robot::pneumaticSub->GetGShiftSolenoid()){
+		float right = deadband(-1*Robot::oi->getGamepad()->GetThrottle(),0.05);
+		if (right<-1*Robot::oi->getGamepad()->GetThrottle()){
+			Robot::pneumaticSub->GetRatchetSolenoid()->Set(false);
+		} else if (right == -1*Robot::oi->getGamepad()->GetThrottle()){
+			Robot::pneumaticSub->GetRatchetSolenoid()->Set(true);
+		} else {
+			Robot::pneumaticSub->GetRatchetSolenoid()->Set(true);
+		}
+		leftMotor1->Set(left);
+		leftMotor2->Set(left);
+		rightMotor1->Set(right);
+		rightMotor2->Set(right);
 	} else {
-		driveMotors->TankDrive(left,right);
+		float right = deadband(Robot::oi->getrightJoy()->GetY(),0.05);
+		if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
+			left  = left * -1;
+			right = right * -1;
+			driveMotors->TankDrive(right,left);
+		} else {
+			driveMotors->TankDrive(left,right);
+		}
 	}
 }
 

@@ -31,6 +31,7 @@ void GShiftSolTog::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void GShiftSolTog::Execute() {
 	Robot::pneumaticSub->GShift();
+	//Robot::pneumaticSub->ScissorLift();
 }
 
 // Make this return true when this Command no longer needs to run execute()

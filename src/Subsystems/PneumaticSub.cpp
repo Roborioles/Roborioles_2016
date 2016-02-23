@@ -50,20 +50,34 @@ void PneumaticSub::GShift() {
 void PneumaticSub::ScissorLift(){
 	bool sPosition = scissorSolen->Get();
 	scissorSolen->Set(!sPosition);
+
 }
 void PneumaticSub::RatchRelease(){
-	bool rPosition = ratchetSolen->Get();
-	ratchetSolen->Set(!rPosition);
+	//bool rPosition = ratchetSolen->Get();
+	printf("Current ratchet position %s\n",ratchetSolen->Get()?"True":"False");
+	ratchetSolen->Set(!ratchetSolen->Get());
+	printf("Modify ratchet position %s\n",ratchetSolen->Get()?"True":"False");
 }
 
 void PneumaticSub::ResetSoleniods() {
 	gShiftSolen->Set(false);
 	scissorSolen->Set(false);
+	defenseSolen->Set(false);
+	ratchetSolen->Set(true);
 }
 
 void PneumaticSub::PrintValues() {
 	SmartDashboard::PutBoolean("gShiftSolen:",gShiftSolen->Get());
 	SmartDashboard::PutBoolean("scissorSolen:",scissorSolen->Get());
+	SmartDashboard::PutBoolean("ratchetSolen:",ratchetSolen->Get());
+}
+
+std::shared_ptr<Solenoid> PneumaticSub::GetGShiftSolenoid(){
+	return gShiftSolen;
+}
+
+std::shared_ptr<Solenoid> PneumaticSub::GetRatchetSolenoid(){
+	return ratchetSolen;
 }
 
 // Put methods for controlling this subsystem
