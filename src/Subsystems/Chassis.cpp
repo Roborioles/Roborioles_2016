@@ -78,7 +78,8 @@ double Chassis::deadband(double JoystickValue,double DeadbandCutOff) {
 void Chassis::DriveWithJoysticks(){
 	float left = deadband(Robot::oi->getleftJoy()->GetY(),0.05);
 
-	if (Robot::pneumaticSub->GetGShiftSolenoid()){
+	if (Robot::pneumaticSub->GetGShiftSolenoid()->Get()){
+		printf("Climbing some cool stuff");
 		float right = deadband(-1*Robot::oi->getGamepad()->GetThrottle(),0.05);
 		if (right<-1*Robot::oi->getGamepad()->GetThrottle()){
 			Robot::pneumaticSub->GetRatchetSolenoid()->Set(false);
@@ -92,6 +93,7 @@ void Chassis::DriveWithJoysticks(){
 		rightMotor1->Set(right);
 		rightMotor2->Set(right);
 	} else {
+		printf("Driving some cool stuff");
 		float right = deadband(Robot::oi->getrightJoy()->GetY(),0.05);
 		if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
 			left  = left * -1;
