@@ -81,13 +81,6 @@ void Chassis::DriveWithJoysticks(){
 	if (Robot::pneumaticSub->GetGShiftSolenoid()->Get()){
 		printf("Climbing some cool stuff");
 		float right = deadband(-1*Robot::oi->getGamepad()->GetThrottle(),0.05);
-		if (right<-1*Robot::oi->getGamepad()->GetThrottle()){
-			Robot::pneumaticSub->GetRatchetSolenoid()->Set(false);
-		} else if (right == -1*Robot::oi->getGamepad()->GetThrottle()){
-			Robot::pneumaticSub->GetRatchetSolenoid()->Set(true);
-		} else {
-			Robot::pneumaticSub->GetRatchetSolenoid()->Set(true);
-		}
 		leftMotor1->Set(left);
 		leftMotor2->Set(left);
 		rightMotor1->Set(right);
