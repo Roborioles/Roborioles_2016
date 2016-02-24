@@ -53,10 +53,7 @@ void PneumaticSub::ScissorLift(){
 
 }
 void PneumaticSub::RatchRelease(){
-	//bool rPosition = ratchetSolen->Get();
-	printf("Current ratchet position %s\n",ratchetSolen->Get()?"True":"False");
 	ratchetSolen->Set(!ratchetSolen->Get());
-	printf("Modify ratchet position %s\n",ratchetSolen->Get()?"True":"False");
 }
 
 void PneumaticSub::ResetSoleniods() {

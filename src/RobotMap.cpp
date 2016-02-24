@@ -79,7 +79,7 @@ void RobotMap::init() {
     pneumaticSubScissorSolen.reset(new Solenoid(0, 4));
     lw->AddActuator("PneumaticSub", "ScissorSolen", pneumaticSubScissorSolen);
     
-    pneumaticSubRatchetSolen.reset(new Solenoid(0, 0));
+    pneumaticSubRatchetSolen.reset(new Solenoid(0, 5));
     lw->AddActuator("PneumaticSub", "RatchetSolen", pneumaticSubRatchetSolen);
     
 
