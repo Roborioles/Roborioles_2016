@@ -169,3 +169,10 @@ void Chassis::rotate(double angle) {
 	rightMotor1->Set(0.4);
 	rightMotor2->Set(0.4);
 }
+
+void Chassis::getMotors(std::shared_ptr<CANTalon> left1,std::shared_ptr<CANTalon>left2,std::shared_ptr<CANTalon> right1,std::shared_ptr<CANTalon>right2){
+	left1=leftMotor1;
+	left2=leftMotor2;
+	right1=rightMotor1;
+	right2=rightMotor2;
+}
