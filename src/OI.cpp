@@ -59,7 +59,7 @@ OI::OI() {
     scissorlift8->WhenPressed(new ScissorSolTog());
     defense5.reset(new JoystickButton(gamepad.get(), 5));
     defense5->WhenPressed(new DefenseSolTog());
-    ratchet2.reset(new JoystickButton(leftJoy.get(), 11));
+    ratchet2.reset(new JoystickButton(rightJoy.get(), 3));
     ratchet2->WhenPressed(new RatchetSolTog());
 
     // SmartDashboard Buttons
