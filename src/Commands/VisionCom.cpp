@@ -22,6 +22,9 @@ VisionCom::VisionCom(){
 std::shared_ptr<NetworkTable> VisionCom::contours=nullptr;
 
 void VisionCom::alignBot(){
+	if (contours==nullptr) {
+		contours=NetworkTable::GetTable("GRIP/contoursReport");
+	}
 	if(contours!=nullptr){
 		std::vector<double> centers=contours->GetNumberArray("centerX",llvm::ArrayRef<double>());
 		//			int ctr=0;
@@ -71,7 +74,6 @@ void VisionCom::alignBot(){
 		}
 	}else{
 		printf("Table not found\n");
-		contours=NetworkTable::GetTable("GRIP/contoursReport");
 	}
 }
 
