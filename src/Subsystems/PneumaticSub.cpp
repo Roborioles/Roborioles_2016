@@ -80,6 +80,11 @@ std::shared_ptr<Solenoid> PneumaticSub::GetRatchetSolenoid(){
 	return ratchetSolen;
 }
 
+std::shared_ptr<Solenoid> PneumaticSub::GetDefenseSolenoid(){
+	return defenseSolen;
+}
+
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
