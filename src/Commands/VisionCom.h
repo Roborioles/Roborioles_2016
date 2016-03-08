@@ -20,12 +20,14 @@ private:
 	static void turnLeft(double);
 	static void turnRight(double);
 	static void stopTurning();
-
+	static bool aligned=false;
+	bool counterclockwise=false;
 	static const int width=320, height=240,imageCenterX=width/2-8,looseTolerance=8,tightTolerance=3,maxDistance=30;
 	static constexpr double slow=.1,fast=.2;
 public:
 	VisionCom();
 	static void alignBot();
+	void setLeft(bool);
 	static void startGrip();
 	virtual void Initialize();
 	virtual void Execute();
