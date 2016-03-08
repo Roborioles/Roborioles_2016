@@ -32,7 +32,11 @@ void AutoRotate::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutoRotate::Execute() {
 	printf("Rotating now\n");
+<<<<<<< HEAD
 	Robot::chassis->rotate(90);
+=======
+	Robot::chassis->rotate(m_angle);
+>>>>>>> 024267ce5767bddcf3e5d214625e478570fc4c4c
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -42,11 +46,19 @@ bool AutoRotate::IsFinished() {
 
 // Called once after isFinished returns true
 void AutoRotate::End() {
+<<<<<<< HEAD
 
+=======
+	Robot::chassis->Stop();
+>>>>>>> 024267ce5767bddcf3e5d214625e478570fc4c4c
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutoRotate::Interrupted() {
+<<<<<<< HEAD
 
+=======
+	Robot::chassis->Stop();
+>>>>>>> 024267ce5767bddcf3e5d214625e478570fc4c4c
 }

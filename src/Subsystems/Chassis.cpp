@@ -109,7 +109,10 @@ void Chassis::DriveWithJoysticks(){
 }
 
 void Chassis::Stop(){
-	driveMotors->StopMotor();
+	leftMotor1->Set(0);
+	leftMotor2->Set(0);
+	rightMotor1->Set(0);
+	rightMotor2->Set(0);
 }
 
 void Chassis::Compress() {
@@ -164,10 +167,35 @@ void Chassis::resetPosition(){
 }
 
 void Chassis::rotate(double angle) {
-	leftMotor1->Set(0.4);
-	leftMotor2->Set(0.4);
-	rightMotor1->Set(0.4);
-	rightMotor2->Set(0.4);
+	// Assume 180 degrees = 24 inches (difference between left/right)
+	// 24/(3.1415*diameter)*1000 = 2546
+	// so 1 degree = 14.15 (2545 / 180)
+
+	resetPosition();
+	double distance=14.15*angle;
+	if (angle > 0) {
+	// Assumes counter-clockwise rotation, where right encoder increases as right moves forward and left encoder decreases as left moves backward
+		while ((rightMotor2->GetEncPosition()-leftMotor2->GetEncPosition())<distance) {
+			leftMotor1->Set(0.4);
+			leftMotor2->Set(0.4);
+			rightMotor1->Set(0.4);
+			rightMotor2->Set(0.4);
+		}
+	} else {
+		// Assumes clockwise rotation, where left encoder increases as left moves forward and right encoder decreases as right moves backward
+		while ((leftMotor2->GetEncPosition()-rightMotor2->GetEncPosition())<distance) {
+			leftMotor1->Set(-0.4);
+			leftMotor2->Set(-0.4);
+			rightMotor1->Set(-0.4);
+			rightMotor2->Set(-0.4);
+		}
+	}
+	leftMotor1->Set(0);
+	leftMotor2->Set(0);
+	rightMotor1->Set(0);
+	rightMotor2->Set(0);
+
 }
+
 
 
