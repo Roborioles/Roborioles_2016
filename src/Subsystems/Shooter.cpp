@@ -100,7 +100,7 @@ void Shooter::SetDownSpeed(int speed) {
 }
 void Shooter::PrintValues() {
 
-	SmartDashboard::PutNumber("Left velocity",leftShooterMotor->GetEncVel());
+	/* SmartDashboard::PutNumber("Left velocity",leftShooterMotor->GetEncVel());
 	SmartDashboard::PutNumber("Left speed",leftShooterMotor->GetSpeed());
 	SmartDashboard::PutNumber("Left PID",leftShooterMotor->PIDGet());
 	SmartDashboard::PutNumber("Left difference",leftShooterMotor->PIDGet()-leftShooterMotor->GetSetpoint());
@@ -110,7 +110,7 @@ void Shooter::PrintValues() {
 	SmartDashboard::PutNumber("Right speed",rightShooterMotor->GetSpeed());
 	SmartDashboard::PutNumber("Right PID",rightShooterMotor->PIDGet());
 	SmartDashboard::PutNumber("Right difference",rightShooterMotor->PIDGet()-rightShooterMotor->GetSetpoint());
-	SmartDashboard::PutNumber("Right SetPoint",rightShooterMotor->GetSetpoint());
+	SmartDashboard::PutNumber("Right SetPoint",rightShooterMotor->GetSetpoint()); */
 
 }
 

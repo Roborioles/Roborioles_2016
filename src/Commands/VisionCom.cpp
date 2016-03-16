@@ -10,6 +10,7 @@ std::shared_ptr<CANTalon> VisionCom::visionLeftMotor1=nullptr;
 std::shared_ptr<CANTalon> VisionCom::visionLeftMotor2=nullptr;
 std::shared_ptr<CANTalon> VisionCom::visionRightMotor1=nullptr;
 std::shared_ptr<CANTalon> VisionCom::visionRightMotor2=nullptr;
+bool VisionCom::aligned=false;
 VisionCom::VisionCom(){
 	printf("vision constructed------------------------------\n");
 	Requires(Robot::chassis.get());
@@ -22,34 +23,22 @@ VisionCom::VisionCom(){
 std::shared_ptr<NetworkTable> VisionCom::contours=nullptr;
 
 void VisionCom::alignBot(){
-	aligned=false;
+
+	aligned = false;
 	if (contours==nullptr) {
 		contours=NetworkTable::GetTable("GRIP/contoursReport");
 	}
 	if(contours!=nullptr){
 		std::vector<double> centers=contours->GetNumberArray("centerX",llvm::ArrayRef<double>());
-		//			int ctr=0;
-		//			for(double x:centers)
-		//			{
-		//				printf("x at %d : %f",ctr++,x);
-		//			}
 		int centerX=centers.size()>0?centers.at(0):imageCenterX;
 
 		int difference = imageCenterX-centerX;
 		printf("difference: %d\n",difference);
 
-<<<<<<< HEAD
-
 		if(centers.size()==0){				//If the box is not found
 			printf("-----\n");
 			stopTurning();
 		}									//We're aligned inside the tighter space
-=======
-		if(centers.size()==0){
-			printf("-----\n");
-			stopTurning();
-		}
->>>>>>> 024267ce5767bddcf3e5d214625e478570fc4c4c
 		else if (abs(difference) <= tightTolerance)
 		{
 			printf("--|--\n");
@@ -132,8 +121,9 @@ void VisionCom::Initialize(){
 
 	printf("vision initialized\n");
 	//Keep turning until the contour is found
+	turnRight(.5);
+	printf("size of contours is %d\n",contours->GetNumberArray("Area",llvm::ArrayRef<double>()).size());
 	while(contours->GetNumberArray("Area",llvm::ArrayRef<double>()).size()==0){
-		turnRight(.5);
 	}
 	stopTurning();
 }
@@ -156,7 +146,7 @@ void VisionCom::End(){
 
 bool VisionCom::IsFinished(){
 	//End the command when the bot is aligned
-	return aligned;
+	return aligned&&!Robot::teleop;
 }
 
 void VisionCom::Interrupted(){

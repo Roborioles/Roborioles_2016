@@ -25,7 +25,7 @@ AutoGroup1::AutoGroup1() {
     // these will run in order.
 
 	AddSequential(new AutoDriveForward(10,0.4));
-	AddSequential(new AutoRotate(90));
+	AddSequential(new AutoRotate(180));
 
     // To run multiple commands at the same time,
     // use AddParallel()

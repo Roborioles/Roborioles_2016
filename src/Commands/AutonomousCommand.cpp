@@ -37,7 +37,6 @@ void AutonomousCommand::Execute() {
 bool AutonomousCommand::IsFinished() {
     return true;
 }
-
 // Called once after isFinished returns true
 void AutonomousCommand::End() {
 

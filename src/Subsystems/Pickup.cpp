@@ -51,13 +51,6 @@ void Pickup::MoveMotor(double speed){
 	thePickupMotor->Set(speed);
 }
 
-	//if (!pickupSolen->Get()){
-	//	Robot::pickup->Raise();
-	//}
-	//else if (pickupSolen->Get()){
-	//	Robot::pickup->Raise();
-	//}
-
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
