@@ -29,8 +29,18 @@ void shootReset::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void shootReset::Execute() {
-	Robot::shooter->GetShooterSolenoid()->Set(false);
+	//Robot::shooter->GetShooterSolenoid()->Set(false);
+	// Encoder based
 	Robot::shooter->SetDownSpeed(0);
+
+	// Throttle based
+	/*Robot::shooter->SetThrottle(0);
+	Robot::chassis->photonOn=false;
+	*/
+
+	// Turn off photon cannon automatically after shot
+	//Robot::chassis->GetPhotonCannon()->Set(Relay::kReverse);
+	//SmartDashboard::PutString("DB/String 5","Photon Off");
 }
 
 // Make this return true when this Command no longer needs to run execute()

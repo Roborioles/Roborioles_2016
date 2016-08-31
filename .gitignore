@@ -5,8 +5,4 @@ Simulate/
 .metadata
 *~
 target/
-<<<<<<< HEAD
 *.o
-=======
-*.o
->>>>>>> origin/master

@@ -27,12 +27,11 @@ AutoDriveForward::AutoDriveForward(double distance, double speed): Command() {
 
 // Called just before this Command runs the first time
 void AutoDriveForward::Initialize() {
-
+	printf("Running AutoDrive\n");
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutoDriveForward::Execute() {
-	printf("Running AutoDrive\n");
 	Robot::chassis->driveFeet(m_distance,m_speed);
 }
 

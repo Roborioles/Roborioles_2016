@@ -35,8 +35,9 @@ void AutoPortcullis::Initialize() {
 void AutoPortcullis::Execute() {
 	printf("Lowering defense\n");
 	Robot::pneumaticSub->GetDefenseSolenoid()->Set(true);
+	Wait(5);
 	printf("Starting to drive forward\n");
-	Robot::chassis->driveFeet(10, 0.4);
+	Robot::chassis->driveFeet(10, 0.5);
 }
 
 // Make this return true when this Command no longer needs to run execute()

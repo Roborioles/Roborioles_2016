@@ -30,8 +30,10 @@ void DriveCmd::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveCmd::Execute() {
-	Robot::chassis->DriveWithJoysticks();
-	Robot::chassis->PrintValues();
+	if (Robot::teleop) {
+		Robot::chassis->DriveWithJoysticks();
+	}
+	// Robot::chassis->PrintValues();
 }
 
 // Make this return true when this Command no longer needs to run execute()
