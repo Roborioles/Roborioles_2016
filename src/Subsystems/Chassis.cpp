@@ -80,7 +80,7 @@ double Chassis::deadband(double JoystickValue,double DeadbandCutOff) {
 }
 
 void Chassis::DriveWithJoysticks(){
-	float left = deadband(Robot::oi->getleftJoy()->GetY(),0.05) * 0.5;
+	float left = deadband(Robot::oi->getleftJoy()->GetY(),0.05);
 
 	/*if (photonOn) {
 		photonCannon->Set(Relay::kForward);
@@ -109,7 +109,7 @@ void Chassis::DriveWithJoysticks(){
 	} else {
 		rightMotor1->ConfigNeutralMode(CANSpeedController::NeutralMode::kNeutralMode_Coast);
 		rightMotor2->ConfigNeutralMode(CANSpeedController::NeutralMode::kNeutralMode_Coast);
-		float right = deadband(Robot::oi->getrightJoy()->GetY(),0.05) * .5;
+		float right = deadband(Robot::oi->getrightJoy()->GetY(),0.05);
 		if (Robot::oi->getrightJoy()->GetRawButton(1) && Robot::oi->getleftJoy()->GetRawButton(1)){
 			left  = left * -0.5;
 			right = right * -0.5;

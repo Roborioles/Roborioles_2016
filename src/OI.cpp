@@ -45,8 +45,8 @@ OI::OI() {
     rightJoy.reset(new Joystick(1));
     leftJoy.reset(new Joystick(0));
     
-    // climb11.reset(new JoystickButton(leftJoy.get(), 3));
-    // climb11->WhenPressed(new GShiftSolTog());
+     climb11.reset(new JoystickButton(leftJoy.get(), 3));
+     climb11->WhenPressed(new GShiftSolTog());
 
     photonButton.reset(new JoystickButton(rightJoy.get(),2));
     photonButton->WhenPressed(new PhotonCannonTog());
@@ -59,8 +59,8 @@ OI::OI() {
     lowGoal4->WhenPressed(new lowshootGroup());
     highGoal1.reset(new JoystickButton(gamepad.get(), 1));
     highGoal1->WhenPressed(new shootGroup());
-    // scissorlift8.reset(new JoystickButton(gamepad.get(), 8));
-    // scissorlift8->WhenPressed(new ScissorSolTog());
+    scissorlift8.reset(new JoystickButton(gamepad.get(), 8));
+    scissorlift8->WhenPressed(new ScissorSolTog());
     defense5.reset(new JoystickButton(gamepad.get(), 5));
     defense5->WhenPressed(new DefenseSolTog());
     ratchet2.reset(new JoystickButton(rightJoy.get(), 3));
